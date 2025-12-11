@@ -1,0 +1,167 @@
+/* PG Details Page Styles */
+
+/* Hero section styles */
+.hero-section {
+  position: relative;
+  overflow: visible;
+  box-shadow: 0 10px 30px rgba(0, 169, 157, 0.3);
+}
+
+/* Add a subtle border to enhance the rounded effect */
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 40px;
+  border: 2px solid rgba(0, 169, 157, 0.1);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Bento grid gallery styles */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 0.5rem;
+  height: 500px;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.bento-grid-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.bento-grid-item:hover {
+  transform: scale(1.02);
+}
+
+.bento-grid-item.main {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+/* Amenity card hover effects */
+.amenity-card {
+  transition: all 0.3s ease;
+}
+
+.amenity-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 169, 157, 0.15);
+}
+
+/* Tab navigation styles */
+.tab-nav {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  padding-bottom: 0.5rem;
+}
+
+.tab-nav::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.tab-button {
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+.tab-button.active {
+  background-color: #00A99D;
+  color: white;
+}
+
+/* Review card hover effects */
+.review-card {
+  transition: all 0.3s ease;
+}
+
+.review-card:hover {
+  box-shadow: 0 10px 25px rgba(0, 169, 157, 0.1);
+}
+
+/* Pricing card hover effects */
+.pricing-card {
+  transition: all 0.3s ease;
+}
+
+.pricing-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 169, 157, 0.15);
+}
+
+.pricing-card.popular {
+  position: relative;
+  z-index: 10;
+  border: 2px solid #00A99D;
+}
+
+/* Custom scrollbar for the page */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 169, 157, 0.5);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 169, 157, 0.7);
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .bento-grid {
+    height: auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+  
+  .bento-grid-item.main {
+    aspect-ratio: 16/9;
+  }
+  
+  .mobile-gallery-scroll {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 0.5rem 0;
+  }
+  
+  .mobile-gallery-scroll::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .mobile-gallery-item {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+    width: 80%;
+    margin-right: 1rem;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  
+  .hero-section::before {
+    border-radius: 30px;
+  }
+}

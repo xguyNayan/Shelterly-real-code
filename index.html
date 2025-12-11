@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="./src/assets/images/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shelterly - Find Your Perfect PG</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta name="apple-mobile-web-app-title" content="Shelterly" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="apple-touch-icon" href="/logo192.png" />
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"></noscript>
+    
+    <!-- Preload critical CSS -->
+    <style>
+      /* Inline critical CSS */
+      :root {
+        --primary-color: #14898A;
+        --accent-color: #62B299;
+        --coral-color: #FF6B6B;
+      }
+      body {
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    
+    <!-- Defer non-critical CSS -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap"></noscript>
+    
+    <!-- Load Tailwind CSS first (without defer) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Defer Google Maps API -->
+    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARcbUsObVolgIdZZQDugZVZRyD18U93kU&libraries=places,geometry"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              turquoise: {
+                DEFAULT: '#40E0D0',
+                '50': '#E6FBFA',
+                '100': '#C5F5F2',
+                '200': '#94ECE6',
+                '300': '#63E3DA',
+                '400': '#40E0D0',
+                '500': '#25C9B9',
+                '600': '#1D9E91',
+                '700': '#167369',
+                '800': '#0F4941',
+                '900': '#071F1C',
+              },
+              teal: {
+                DEFAULT: '#008080',
+                '50': '#E6FFFF',
+                '100': '#B3FFFF',
+                '200': '#66FFFF',
+                '300': '#19FFFF',
+                '400': '#00CCCC',
+                '500': '#008080',
+                '600': '#006666',
+                '700': '#004D4D',
+                '800': '#003333',
+                '900': '#001A1A',
+              },
+              primary: {
+                50: '#E6F6F6',
+                100: '#B2E8E8',
+                200: '#7FDADA',
+                300: '#4ACCCC',
+                400: '#26B5B5',
+                500: '#14898A',
+                600: '#0F6A6B',
+                700: '#0A4B4C',
+              },
+              accent: '#62B299',
+              coral: '#FF6B6B',
+            },
+            fontFamily: {
+              'sans': ['Inter', 'system-ui', 'sans-serif'],
+              'poppins': ['Poppins', 'sans-serif'],
+              'dm-sans': ['DM Sans', 'sans-serif'],
+            },
+          }
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="./src/main.tsx"></script>
+    
+    <!-- Service Worker Registration for better mobile support -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('/firebase-messaging-sw.js')
+            .then(function(registration) {
+              console.log('Service Worker registered with scope:', registration.scope);
+            })
+            .catch(function(error) {
+              console.error('Service Worker registration failed:', error);
+            });
+        });
+      }
+    </script>
+  </body>
+</html>

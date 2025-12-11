@@ -1,0 +1,24 @@
+config:
+  target: "https://shelterly.vercel.app"
+  phases:
+    # Quick 1-minute test with moderate load
+    - duration: 60
+      arrivalRate: 20
+      name: "Quick load test"
+
+  ensure:
+    maxErrorRate: 1
+    p95: 2000
+
+scenarios:
+  - name: "Homepage"
+    weight: 50
+    flow:
+      - get:
+          url: "/"
+
+  - name: "Listings"
+    weight: 50
+    flow:
+      - get:
+          url: "/listings"

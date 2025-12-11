@@ -1,0 +1,44 @@
+config:
+  target: "https://shelterly.vercel.app"
+  phases:
+    # Gradual ramp-up to find breaking point
+    - duration: 60
+      arrivalRate: 10
+      rampTo: 50
+      name: "Stage 1: Light load"
+    
+    - duration: 60
+      arrivalRate: 50
+      rampTo: 100
+      name: "Stage 2: Moderate load"
+    
+    - duration: 60
+      arrivalRate: 100
+      rampTo: 200
+      name: "Stage 3: Heavy load"
+    
+    - duration: 60
+      arrivalRate: 200
+      rampTo: 300
+      name: "Stage 4: Extreme load"
+    
+    # Cool down
+    - duration: 30
+      arrivalRate: 10
+      name: "Cool down"
+
+  ensure:
+    maxErrorRate: 5  # Allow up to 5% error rate for stress testing
+
+scenarios:
+  - name: "Full User Journey"
+    flow:
+      - get:
+          url: "/"
+      - think: 1
+      - get:
+          url: "/listings"
+      - think: 2
+      - get:
+          url: "/about"
+      - think: 1

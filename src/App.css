@@ -1,0 +1,38 @@
+/* Custom styles beyond Tailwind */
+
+/* For smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Container width adjustments */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* Custom animations */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Gradient text utility if not using Tailwind plugin */
+.gradient-text {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, #40E0D0, #008080);
+}

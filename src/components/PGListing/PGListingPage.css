@@ -1,0 +1,451 @@
+/* PG Listing Page Styles */
+
+/* Hero section styles */
+.hero-section {
+  min-height: 500px;
+  position: relative;
+  overflow: visible;
+  box-shadow: 0 10px 30px rgba(0, 169, 157, 0.3);
+}
+
+/* Add a subtle border to enhance the rounded effect */
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 40px;
+  border: 2px solid rgba(0, 169, 157, 0.1);
+  pointer-events: none;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: 290px; /* Reduced from 700px to remove extra space */
+    border-radius: 30px;
+  }
+  
+  .hero-section::before {
+    border-radius: 30px;
+  }
+}
+
+/* Animated background elements */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes pulse {
+  0% { opacity: 0.05; }
+  50% { opacity: 0.15; }
+  100% { opacity: 0.05; }
+}
+
+@keyframes wave {
+  0% { transform: translateX(0) translateZ(0); }
+  50% { transform: translateX(-5px) translateZ(0); }
+  100% { transform: translateX(0) translateZ(0); }
+}
+
+/* Wavy pattern animation */
+.hero-section svg path {
+  animation: wave 15s ease-in-out infinite;
+}
+
+.hero-section svg path:nth-child(2) {
+  animation-delay: -5s;
+}
+
+/* Grid pattern animation */
+.hero-section .opacity-5 {
+  animation: pulse 8s infinite ease-in-out;
+}
+
+/* Curved accent animation */
+.hero-section .rounded-tl-full {
+  animation: pulse 10s infinite ease-in-out;
+}
+
+/* Gradient text animation */
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.hero-section .text-transparent.bg-clip-text {
+  background-size: 200% auto;
+  animation: gradient 5s ease infinite;
+  background-image: linear-gradient(90deg, #00A99D 0%, #3B82F6 50%, #00A99D 100%) !important;
+}
+
+/* Typography enhancements */
+.hero-section .font-light {
+  font-weight: 300;
+  letter-spacing: 0.02em;
+}
+
+.hero-section .font-black {
+  font-weight: 900;
+  letter-spacing: -0.01em;
+}
+
+.hero-section .font-mono {
+  font-family: 'SF Mono', SFMono-Regular, ui-monospace, Menlo, Monaco, Consolas, monospace;
+  letter-spacing: 0.1em;
+}
+
+/* Spline container styles */
+.hero-section .pointer-events-none {
+  pointer-events: none !important;
+  user-select: none;
+  touch-action: none;
+}
+
+/* Make sure Spline canvas is non-interactive and fully visible */
+.hero-section canvas {
+  pointer-events: none !important;
+  max-width: none !important;
+  max-height: none !important;
+  display: block !important;
+  z-index: 10 !important;
+}
+
+.hero-section .overflow-visible {
+  overflow: visible !important;
+}
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+  .hero-section .scale-70 {
+    transform: scale(0.7);
+    transform-origin: top center;
+  }
+  
+  .hero-section .h-\[50vh\] {
+    height: 50vh;
+  }
+  
+  .hero-section .py-4 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  
+  .hero-section .overflow-visible {
+    overflow: visible;
+  }
+  
+  .hero-section .absolute {
+    position: absolute;
+  }
+  
+  .hero-section .top-\[20px\] {
+    top: 20px;
+  }
+}
+
+/* Desktop-specific styles */
+@media (min-width: 769px) {
+  .hero-section .scale-90 {
+    transform: scale(0.9);
+    transform-origin: top center;
+  }
+  
+  .hero-section .h-\[350px\] {
+    height: 350px;
+  }
+  
+  .hero-section .py-6 {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+  
+  .hero-section .overflow-visible {
+    overflow: visible;
+  }
+  
+  .hero-section .absolute {
+    position: absolute;
+  }
+  
+  .hero-section .top-\[30px\] {
+    top: 30px;
+  }
+  
+  .hero-section .right-\[-20px\] {
+    right: -20px;
+  }
+}
+
+/* Card hover effects */
+.pg-card {
+  transition: all 0.3s ease;
+}
+
+.pg-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Custom scrollbar for the listing section */
+.listing-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.listing-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.listing-container::-webkit-scrollbar-thumb {
+  background: rgba(20, 137, 138, 0.5);
+  border-radius: 10px;
+}
+
+.listing-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(20, 137, 138, 0.8);
+}
+
+/* Pulsing animation for new badges */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 107, 107, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 107, 107, 0);
+  }
+}
+
+.badge-new {
+  animation: pulse 2s infinite;
+}
+
+/* Shimmer effect for loading cards */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.shimmer {
+  animation: shimmer 2s infinite linear;
+  background: linear-gradient(to right, #f6f7f8 8%, #edeef1 18%, #f6f7f8 33%);
+  background-size: 1000px 100%;
+}
+
+/* Map marker bounce animation */
+@keyframes markerBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.marker-bounce {
+  animation: markerBounce 1s infinite;
+}
+
+/* Price tag animation */
+@keyframes wiggle {
+  0%, 100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
+.price-tag:hover {
+  animation: wiggle 0.5s ease-in-out;
+}
+
+/* Floating animation for the filters button */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Gradient text for premium listings */
+.premium-text {
+  background: linear-gradient(90deg, #14898A 0%, #62B299 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glassmorphism effect for map overlay */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Staggered animation for filter items */
+.stagger-item {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInUp 0.5s forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stagger-item:nth-child(1) { animation-delay: 0.1s; }
+.stagger-item:nth-child(2) { animation-delay: 0.2s; }
+.stagger-item:nth-child(3) { animation-delay: 0.3s; }
+.stagger-item:nth-child(4) { animation-delay: 0.4s; }
+.stagger-item:nth-child(5) { animation-delay: 0.5s; }
+.stagger-item:nth-child(6) { animation-delay: 0.6s; }
+
+/* Custom range slider styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  height: 8px;
+  border-radius: 5px;
+  background: #e0e0e0;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #14898A;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+input[type="range"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 5px;
+  background: #e0e0e0;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 0 3px rgba(20, 137, 138, 0.3);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #14898A;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 0 3px rgba(20, 137, 138, 0.3);
+}
+
+/* Image gallery navigation buttons */
+.gallery-nav-btn {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(4px);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.gallery-nav-btn:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: scale(1.1);
+}
+
+/* Custom checkbox styling */
+.custom-checkbox {
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.custom-checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #fff;
+  border: 2px solid #e0e0e0;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.custom-checkbox:hover input ~ .checkmark {
+  border-color: #14898A;
+}
+
+.custom-checkbox input:checked ~ .checkmark {
+  background-color: #14898A;
+  border-color: #14898A;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.custom-checkbox input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.custom-checkbox .checkmark:after {
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}

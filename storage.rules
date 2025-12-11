@@ -1,0 +1,19 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Allow read/write access to all users (FOR DEVELOPMENT ONLY)
+    match /{allPaths=**} {
+      allow read, write;
+    }
+    
+    // PRODUCTION RULES (commented out for now)
+    // match /{allPaths=**} {
+    //   allow read;
+    // }
+    // 
+    // match /pg-images/{pgId}/{category}/{fileName} {
+    //   allow write: if request.auth != null;
+    // }
+  }
+}

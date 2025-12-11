@@ -1,0 +1,67 @@
+config:
+  target: "https://shelterly.vercel.app"
+  phases:
+    # Warm-up phase: 10 users over 30 seconds
+    - duration: 30
+      arrivalRate: 10
+      name: "Warm-up"
+    
+    # Ramp-up phase: gradually increase to 50 users per second over 2 minutes
+    - duration: 120
+      arrivalRate: 10
+      rampTo: 50
+      name: "Ramp-up load"
+    
+    # Sustained load: maintain 50 users per second for 3 minutes
+    - duration: 180
+      arrivalRate: 50
+      name: "Sustained load"
+    
+    # Spike test: sudden increase to 100 users per second for 1 minute
+    - duration: 60
+      arrivalRate: 100
+      name: "Spike test"
+
+  # Performance thresholds
+  ensure:
+    maxErrorRate: 1  # Max 1% error rate
+    p95: 2000        # 95% of requests should complete within 2 seconds
+    p99: 5000        # 99% of requests should complete within 5 seconds
+
+scenarios:
+  - name: "Homepage Visit"
+    weight: 40
+    flow:
+      - get:
+          url: "/"
+          capture:
+            - json: "$"
+              as: "homepage"
+
+  - name: "Browse Listings"
+    weight: 30
+    flow:
+      - get:
+          url: "/"
+      - think: 2  # User pauses for 2 seconds
+      - get:
+          url: "/listings"
+      - think: 3
+
+  - name: "View Single Listing"
+    weight: 20
+    flow:
+      - get:
+          url: "/"
+      - think: 1
+      - get:
+          url: "/listings"
+      - think: 2
+      - get:
+          url: "/listing/{{ $randomString() }}"
+
+  - name: "Static Assets"
+    weight: 10
+    flow:
+      - get:
+          url: "/assets/{{ $randomString() }}.js"
