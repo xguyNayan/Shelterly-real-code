@@ -9,7 +9,7 @@ const db = admin.firestore();
 const TELEGRAM_API_BASE = "https://api.telegram.org/bot";
 
 // Telegram Bot Token
-const TELEGRAM_BOT_TOKEN = "7845325656:AAGhazLPzt4psXv7voeQKlYbhMeJE5cx4t4";
+const TELEGRAM_BOT_TOKEN = ""; //add api key
 
 /**
  * Cloud Function that handles Telegram bot webhook events

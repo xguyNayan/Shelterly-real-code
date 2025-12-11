@@ -6,7 +6,7 @@ import axios from "axios";
 const db = admin.firestore();
 
 // Telegram Bot Token
-const TELEGRAM_BOT_TOKEN = "7845325656:AAGhazLPzt4psXv7voeQKlYbhMeJE5cx4t4";
+const TELEGRAM_BOT_TOKEN = ""; //add token
 
 // Telegram Bot API endpoint
 const TELEGRAM_API_BASE = "https://api.telegram.org/bot";
